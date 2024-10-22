@@ -1,28 +1,24 @@
-const pokemonList = [
-  {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-  },
-  {
-    name: "mew",
-  },
-];
+interface Pokemon {
+  name: string;
+  imgSrc: string | null; // imgSrc peut être une chaîne ou null
+}
 
-const PokemonCard: React.FC = () => {
-  const pokemon = pokemonList[1]; // Premier Pokémon du tableau
+interface PokemonCardProps {
+  pokemon: Pokemon; // Définition des props
+}
 
+const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => { // Utilisation de la déstructuration
   return (
     <figure>
-      {/* Afficher l'image seulement si imgSrc est défini, sinon afficher ??? */}
-      {pokemon.imgSrc ? (
+      {pokemon.imgSrc ? ( // Vérification si imgSrc est défini
         <img src={pokemon.imgSrc} alt={pokemon.name} />
       ) : (
-        <p>???</p>
+        <p>???</p> // Affichage de "???" si imgSrc n'est pas défini
       )}
-      <figcaption>{pokemon.name}</figcaption> {/* Nom du Pokémon */}
+      <figcaption>{pokemon.name}</figcaption> {/* Affichage du nom du Pokémon */}
     </figure>
   );
 };
 
 export default PokemonCard;
+
