@@ -27,7 +27,6 @@ const pokemonList = [
   },
   {
     name: "mew",
-    imgSrc: null, // imgSrc est défini sur null pour Mew
   },
 ];
 
