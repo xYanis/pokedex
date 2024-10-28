@@ -1,4 +1,4 @@
-import { useState } from 'react'; // Importation du hook useState
+import { useState, useEffect } from 'react'; // Importation du hook useState
 import './App.css'; // Importation du fichier CSS
 import PokemonCard from './components/PokemonCard'; // Importation de PokemonCard
 import NavBar from './components/NavBar'; // Importation de NavBar
@@ -33,7 +33,9 @@ const pokemonList = [
 function App() {
   // Création de l'état pokemonIndex, initialisé à 0 (Bulbasaur)
   const [pokemonIndex, setPokemonIndex] = useState(0);
-
+  useEffect(() => {
+    alert("hello pokemon trainer :)");
+  },[]);
   return (
     <div>
       {/* Affiche le Pokémon en fonction de pokemonIndex */}

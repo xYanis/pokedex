@@ -1,27 +1,33 @@
 import React from 'react';
 
-// Définition de l'interface Pokemon
 interface Pokemon {
   name: string;
   imgSrc?: string | null;
 }
 
-// Interface pour typer les props du composant NavBar
 interface NavBarProps {
   pokemonIndex: number;
   setPokemonIndex: (index: number) => void;
   pokemonList: Pokemon[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({ setPokemonIndex, pokemonList }) => {
+const NavBar: React.FC<NavBarProps> = ({ pokemonIndex, setPokemonIndex, pokemonList }) => {
   return (
     <div>
       {pokemonList.map((pokemon, index) => (
         <button
-          key={pokemon.name} 
-          onClick={() => setPokemonIndex(index)} 
+          key={pokemon.name}
+          onClick={() => {
+            setPokemonIndex(index);
+            if (pokemon.name === "pikachu") {
+              alert("pika pikachu !!!");
+            }
+          }}
+          style={{
+            fontWeight: pokemonIndex === index ? 'bold' : 'normal', 
+          }}
         >
-          {pokemon.name} 
+          {pokemon.name}
         </button>
       ))}
     </div>
