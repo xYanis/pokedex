@@ -1,6 +1,6 @@
 interface Pokemon {
   name: string;
-  imgSrc: string | null; // imgSrc peut être une chaîne ou null
+  imgSrc?: string; // imgSrc peut être une chaîne ou null
 }
 
 interface PokemonCardProps {

@@ -3,7 +3,7 @@ import React from 'react';
 // Définition de l'interface Pokemon
 interface Pokemon {
   name: string;
-  imgSrc?: string | null; // Autoriser undefined et null
+  imgSrc?: string | null;
 }
 
 // Interface pour typer les props du composant NavBar
@@ -13,28 +13,17 @@ interface NavBarProps {
   pokemonList: Pokemon[];
 }
 
-const NavBar: React.FC<NavBarProps> = ({ pokemonIndex, setPokemonIndex, pokemonList }) => {
-  // Fonction pour aller au Pokémon précédent
-  const handlePrev = () => {
-    if (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex - 1);
-    }
-  };
-
-  // Fonction pour aller au Pokémon suivant
-  const handleNext = () => {
-    if (pokemonIndex < pokemonList.length - 1) {
-      setPokemonIndex(pokemonIndex + 1);
-    }
-  };
-
+const NavBar: React.FC<NavBarProps> = ({ setPokemonIndex, pokemonList }) => {
   return (
     <div>
-      {/* Affiche le bouton "Précédent" seulement si l'index est supérieur à 0 */}
-      {pokemonIndex > 0 && <button onClick={handlePrev}>Précédent</button>}
-
-      {/* Affiche le bouton "Suivant" seulement si l'index est inférieur à la longueur de la liste */}
-      {pokemonIndex < pokemonList.length - 1 && <button onClick={handleNext}>Suivant</button>}
+      {pokemonList.map((pokemon, index) => (
+        <button
+          key={pokemon.name} 
+          onClick={() => setPokemonIndex(index)} 
+        >
+          {pokemon.name} 
+        </button>
+      ))}
     </div>
   );
 };
